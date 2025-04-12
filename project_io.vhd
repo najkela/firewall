@@ -13,7 +13,7 @@ ENTITY project_io IS
         out_write_enable : OUT STD_LOGIC;
         out_index : OUT INTEGER;
         out_data : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
-        in_buff_size : OUT INTEGER := 1;
+        in_buff_size : OUT INTEGER := 1500;
         out_buff_size : OUT INTEGER := 1
     );
 END ENTITY project_io;
