@@ -6,9 +6,7 @@ entity ethernet is
     type byte_array_ip is array (1 downto 0) of std_logic_vector(7 downto 0);
 
     port(
-        signal i_destination_mac : in byte_array_m;
-        signal i_source_mac : in byte_array_m;
-        signal i_ip : in byte_array_ip;
+        signal input_signal : in std_logic_vector(7 downto 0);
 
         signal mal : out std_logic := '0';
     );
@@ -16,10 +14,13 @@ end entity ethernet;
 
 architecture behavioural of ethernet is 
 
-    signal input_signal : in std_logic_vector(7 downto 0);
     signal index_signal : integer := 0;
     signal index_byte : integer := 0;
     signal flag : std_logic := '0';
+
+    signal i_destination_mac : byte_array_m;
+    signal i_source_mac : byte_array_m;
+    signal i_ip : byte_array_ip;
 
     pisanje : process
     begin 

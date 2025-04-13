@@ -27,7 +27,7 @@ BEGIN
 
     transfer : entity work.ethernet(behavioural)
     port map(
-        input_signal <= temp_data,
+        input_signal => temp_data,
         mal => mal_ip
     );
 
