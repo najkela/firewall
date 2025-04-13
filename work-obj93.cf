@@ -1,10 +1,10 @@
 v 4
-file . "project_io_tb.vhdl" "202aee137058b9abd7dab5f67ef77a43bc6eb051" "20250413154844.759":
-  entity project_io_tb at 1( 0) + 0 on 15;
-  architecture test of project_io_tb at 9( 250) + 0 on 16;
-file . "project_io.vhdl" "b3ffe7869b326142337a56170548591abb6c9cd8" "20250413154844.758":
-  entity project_io at 1( 0) + 0 on 13;
-  architecture behavioural of project_io at 23( 602) + 0 on 14;
-file . "ethernet.vhdl" "6b7505dc36b89e5ecdd354e869a4118aac4af0c0" "20250413154844.758":
-  entity ethernet at 1( 0) + 0 on 11;
-  architecture behavioural of ethernet at 15( 376) + 0 on 12;
+file . "ethernet.vhdl" "f78a93ed2793ba18707b62d48c4bf802e72c72c6" "20250413165816.222":
+  entity ethernet at 1( 0) + 0 on 17;
+  architecture behavioural of ethernet at 15( 376) + 0 on 18;
+file . "novi_io.vhdl" "d86b4b7fd32c79130b2d3bd76f17a35dc55f3188" "20250413165816.223":
+  entity project_io at 1( 0) + 0 on 19;
+  architecture behavioural of project_io at 23( 613) + 0 on 20;
+file . "novi_tb.vhdl" "dcbabb4e7d0fe0c0c02c50f0b2440d8d74202038" "20250413165816.227":
+  entity project_io_tb at 1( 0) + 0 on 21;
+  architecture behavioural of project_io_tb at 23( 581) + 0 on 22;

@@ -47,6 +47,8 @@ architecture behavioural of ethernet is
                 index_signal <= 3;
                 flag <= '1';
             end if;
+        else
+            wait;
         end if;
     end process pisanje;
 
@@ -56,6 +58,8 @@ architecture behavioural of ethernet is
             if not (i_ip(0) = "00001000" and i_ip(1) = "00000000") then
                 mal <= '1';
             end if;
+        else 
+            wait;
         end if;
     end process provera_ip;
 
