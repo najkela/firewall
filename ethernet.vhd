@@ -2,14 +2,14 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 entity ethernet is
-    type byte_array_m is array (5 downto 0) of std_logic_vector(7 downto 0);
-    type byte_array_ip is array (1 downto 0) of std_logic_vector(7 downto 0);
-
     port(
         signal input_signal : in std_logic_vector(7 downto 0);
+        
+        signal mal : out std_logic := '0'
+        );
 
-        signal mal : out std_logic := '0';
-    );
+    type byte_array_m is array (5 downto 0) of std_logic_vector(7 downto 0);
+    type byte_array_ip is array (1 downto 0) of std_logic_vector(7 downto 0);
 end entity ethernet;
 
 architecture behavioural of ethernet is 
@@ -22,6 +22,7 @@ architecture behavioural of ethernet is
     signal i_source_mac : byte_array_m;
     signal i_ip : byte_array_ip;
 
+    begin
     pisanje : process
     begin 
         if index_signal = 0 then 
