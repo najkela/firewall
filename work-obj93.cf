@@ -1,0 +1,10 @@
+v 4
+file . "project_io_tb.vhdl" "202aee137058b9abd7dab5f67ef77a43bc6eb051" "20250413154844.759":
+  entity project_io_tb at 1( 0) + 0 on 15;
+  architecture test of project_io_tb at 9( 250) + 0 on 16;
+file . "project_io.vhdl" "b3ffe7869b326142337a56170548591abb6c9cd8" "20250413154844.758":
+  entity project_io at 1( 0) + 0 on 13;
+  architecture behavioural of project_io at 23( 602) + 0 on 14;
+file . "ethernet.vhdl" "6b7505dc36b89e5ecdd354e869a4118aac4af0c0" "20250413154844.758":
+  entity ethernet at 1( 0) + 0 on 11;
+  architecture behavioural of ethernet at 15( 376) + 0 on 12;

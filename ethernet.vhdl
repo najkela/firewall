@@ -17,7 +17,6 @@ architecture behavioural of ethernet is
     signal index_signal : integer := 0;
     signal index_byte : integer := 0;
     signal flag : std_logic := '0';
-    mal <= '0';
 
     signal i_destination_mac : byte_array_m;
     signal i_source_mac : byte_array_m;

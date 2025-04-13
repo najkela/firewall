@@ -14,20 +14,21 @@ ENTITY project_io IS
         out_index : OUT INTEGER;
         out_data : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
         in_buff_size : OUT INTEGER := 1500;
-        out_buff_size : OUT INTEGER := 1
+        out_buff_size : OUT INTEGER := 1;
+
+        mal_ip : out std_logic := '0'
     );
 END ENTITY project_io;
 
 ARCHITECTURE behavioural OF project_io IS
-    SIGNAL temp_data : STD_LOGIC_VECTOR (7 DOWNTO 0);
-    SIGNAL done_s : STD_LOGIC := '0';
-    signal mal_ip : std_logic := '0';
+
+    signal done_s : STD_LOGIC := '0';
 
 BEGIN
 
     transfer : entity work.ethernet(behavioural)
     port map(
-        input_signal => temp_data,
+        input_signal => in_data,
         mal => mal_ip
     );
 
@@ -41,7 +42,6 @@ BEGIN
             IF enable = '1' AND done_s = '0' THEN
                 in_read_enable <= '1';
                 in_index <= 0;
-                temp_data <= in_data;
                 done_s <= '1';
                 done <= '0';
             ELSIF done_s = '1' THEN
