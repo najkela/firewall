@@ -21,7 +21,16 @@ END ENTITY project_io;
 ARCHITECTURE behavioural OF project_io IS
     SIGNAL temp_data : STD_LOGIC_VECTOR (7 DOWNTO 0);
     SIGNAL done_s : STD_LOGIC := '0';
+    signal mal_ip : std_logic := '0';
+
 BEGIN
+
+    transfer : entity work.ethernet(behavioural)
+    port map(
+        input_signal <= temp_data,
+        mal => mal_ip
+    );
+
     PROCESS (clk, rst)
     BEGIN
         IF rst = '1' THEN
@@ -31,11 +40,8 @@ BEGIN
         ELSIF rising_edge(clk) THEN
             IF enable = '1' AND done_s = '0' THEN
                 in_read_enable <= '1';
-                out_write_enable <= '1';
                 in_index <= 0;
-                out_index <= 0;
                 temp_data <= in_data;
-                out_data <= temp_data;
                 done_s <= '1';
                 done <= '0';
             ELSIF done_s = '1' THEN
