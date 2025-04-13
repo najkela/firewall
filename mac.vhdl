@@ -1,7 +1,7 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
-ENTITY project_io IS
+ENTITY mac_io IS
     PORT (
         clk : IN STD_LOGIC;
         rst : IN STD_LOGIC;
@@ -14,14 +14,17 @@ ENTITY project_io IS
         out_index : OUT INTEGER;
         out_data : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
         in_buff_size : OUT INTEGER := 1;
+        mal : out std_logic := '0';
         out_buff_size : OUT INTEGER := 1
     );
-END ENTITY project_io;
+END ENTITY mac_io;
 
-ARCHITECTURE behavioural OF project_io IS
+ARCHITECTURE behavioural OF mac_io IS
     SIGNAL temp_data : STD_LOGIC_VECTOR (7 DOWNTO 0) := (others => '1');
     SIGNAL done_s : STD_LOGIC := '0';
     SIGNAL state_s : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
+    signal counter : integer range 0 to 12 := 0;
+    signal mac : integer range 0 to 12 := 0;
 BEGIN
     PROCESS (clk, rst)
     BEGIN
@@ -42,6 +45,24 @@ BEGIN
             ELSIF enable = '1' AND state_s = "010" THEN
                 temp_data <= in_data;
                 state_s <= "011";
+              -- Ispravka: koristi in_data umesto temp_data
+    if (in_data = "11111111" and mac < 12) then
+        counter <= counter + 1;
+    end if;
+
+    if (mac < 12) then
+        mac <= mac + 1;
+    end if;
+
+    -- Ispravljena logika za postavljanje mal
+    if (mac = 11) then
+        if (counter = 11) then
+            mal <= '0';  -- svi bajtovi su sumnjivi
+        else
+            mal <= '0';  -- nije maliciozan
+        end if;
+    
+                end if;
 
             ELSIF enable = '1' AND state_s = "011" THEN
                 out_write_enable <= '1';

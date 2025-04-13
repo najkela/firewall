@@ -23,6 +23,12 @@ architecture behavioural of ethernet is
     signal i_ip : byte_array_ip;
     signal priv_mal : std_logic := '1';
     signal i : integer :=0;
+    signal i_pro :  std_logic_vector(7 downto 0);
+    signal pro_flag : std_logic := '0';
+    signal pro_1 : std_logic_vector(7 downto 0);
+    signal pro_2 : std_logic_vector(7 downto 0);
+    signal flag_1024 : std_logic := '0';
+    signal pro_1024 : std_logic_vector(13 downto 0);
     begin
     pisanje : process
     begin 
@@ -48,6 +54,27 @@ architecture behavioural of ethernet is
                 index_signal <= 3;
                 flag <= '1';
             end if;
+        elsif (index_signal = 3) then
+            index_byte <= index_byte +1;
+            if index_byte = 2  then
+                pro_1 <= input_signal;
+                if index_byte = 3 then
+                pro_2 <= input_signal;
+                index_byte <=0;
+                index_signal  <= 4;
+                flag_1024 <= '1';
+                end if;
+            end if;
+            
+        elsif index_signal = 4 then
+            index_byte <= index_byte +1;
+            if (index_byte = 7) then
+            index_byte <= 0;
+            i_pro <= input_signal; 
+            index_signal <= 4;
+            pro_flag <= '1'; 
+            end if;
+            
         end if;
     end process pisanje;
 
@@ -76,5 +103,21 @@ architecture behavioural of ethernet is
             mal <= '1';
         end if;
     end process provera_mac;
-
+    pro : process
+    begin
+        if (pro_flag = '1') then
+            if not (i_pro = "00000110" or i_pro = "00010001") then
+                mal <='1';
+            end if;
+        end if;
+    end process pro;
+    pro1024 : process
+    begin 
+        if (flag_1024 = '1') then
+        pro_1024 <= pro_1 & pro_2;
+        if (pro_1024 < "10000000000000000") then
+            mal <= '1';
+        end if;
+        end if;
+    end process pro1024;
 end architecture behavioural;

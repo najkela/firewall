@@ -1,0 +1,13 @@
+v 4
+file . "ethernet.vhdl" "b39386675237182e802d70f9f31de1447e96e1ae" "20250413174437.836":
+  entity ethernet at 1( 0) + 0 on 77;
+  architecture behavioural of ethernet at 15( 410) + 0 on 78;
+file . "project_io.vhdl" "6a3ac913c2b63e4a61f2b50cc5b10c7b90324ed0" "20250413084519.404":
+  entity project_io at 1( 0) + 0 on 41;
+  architecture behavioural of project_io at 21( 593) + 0 on 42;
+file . "mac_tb.vhdl" "bfafce0a45a1e8f7786e9d894452e423ce77a6a6" "20250413091548.070":
+  entity mac_io_tb at 1( 0) + 0 on 67;
+  architecture test of mac_io_tb at 9( 131) + 0 on 68;
+file . "mac.vhdl" "d63d5458aa07e5158b8a3687f21326b77bb19972" "20250413091543.516":
+  entity mac_io at 1( 0) + 0 on 65;
+  architecture behavioural of mac_io at 22( 622) + 0 on 66;
